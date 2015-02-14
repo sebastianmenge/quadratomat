@@ -20,6 +20,20 @@ body {
   color: #424242;
 }
 
+.qt-logo {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.29);
+  padding: 16px 0 8px;
+  img {
+    width: 185px;
+  }
+}
+
 #canvas {
   position: fixed;
   top: 0;
@@ -42,22 +56,25 @@ body {
 
 .colors-and-presets {
   @include flexbox();
-  flex-flow: row;
-  -webkit-flex-flow: row;
+  flex-flow: column;
+  -webkit-flex-flow: column;
+  align-items: center;
 }
 
-.colors, .presets, .settings {
+.colors, .settings {
   padding: 0 20px;
   margin: 0;
+  width: 100%;
   list-style-type: none;
   @include flexbox();
-  flex-flow: row;
-  -webkit-flex-flow: row;
-  align-items: center;
-  .menu-color {
+  justify-content: center;
+  .menu-color, .menu-preset {
     cursor: pointer;
     width: 40px;
     height: 40px;
+  }
+  .menu-preset:first-of-type {
+    border: 3px solid red;
   }
   label {
     display: block;
@@ -67,9 +84,7 @@ body {
   }
 }
 .settings {
-  justify-content: flex-end;
-  flex: 1 50%;
-  width: 50%;
+  margin-top: 20px;
   li {
     flex: 1;
   }

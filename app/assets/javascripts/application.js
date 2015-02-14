@@ -16,4 +16,5 @@
 //= require underscore
 //= require react
 //= require react_ujs
+//= require color_presets
 //= require_tree .
