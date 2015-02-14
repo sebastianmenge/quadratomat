@@ -16,6 +16,8 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+  color: #424242;
 }
 
 #canvas {
@@ -29,15 +31,22 @@ body {
 .menu {
   position: relative;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.94);
-  height: 95px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.31);
+  height: 115px;
+  @include flexbox();
+  flex-flow: column;
+  -webkit-flex-flow: column;
+  align-items: center;
+}
+
+.colors-and-presets {
   @include flexbox();
   flex-flow: row;
   -webkit-flex-flow: row;
-  align-items: center;
 }
+
 .colors, .presets, .settings {
-  @include flex(1 100%);
   padding: 0 20px;
   margin: 0;
   list-style-type: none;
@@ -45,14 +54,27 @@ body {
   flex-flow: row;
   -webkit-flex-flow: row;
   align-items: center;
-  li {
-    width: 50px;
-    height: 50px;
-    border-radius: 100px;
-    margin-right: -11px;
+  .menu-color {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+  label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+    text-align: center;
   }
 }
-.presets {
+.settings {
   justify-content: flex-end;
+  flex: 1 50%;
+  width: 50%;
+  li {
+    flex: 1;
+  }
+  input {
+    display: block;
+    margin: auto;
+  }
 }
-

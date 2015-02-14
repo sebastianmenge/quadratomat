@@ -1,26 +1,72 @@
 var Menu = React.createClass({
   displayName: "Menu",
 
-  handleSizeChange: function(e) {
-    CanvasStore.changeSize(parseInt(e.target.value))
+  onSliderChange: function(e) {
+    CanvasStore.sliderChange(e.target.name, parseInt(e.target.value));
   },
 
   render: function() {
-    var huesMap = [7, 24, 32, 45, 57, 67, 76, 93, 130, 152, 183, 196, 212];
+    var huesMap = [6, 18, 24, 31, 39, 47, 55, 58, 68, 87, 119, 138, 147, 192, 202, 211, 223, 232, 246, 270, 305, 325, 346, 358];
+    var presets = [];
     var hues = _.map(huesMap, function(item) {
-      return <li onClick={this.handleCLick} style={{background: "hsl("+item+", 100%, 40%)"}}></li>
+      return <ColorButton hue={item} activeHues={this.props.colorCfg.hues}/>
+    }.bind(this))
+    var presets = _.map(presets, function(item) {
+      return <li className='menu-color' activeHues={this.props.colorCfg.hues} onClick={this.handleCLick} style={{background: "hsl("+item+", 100%, 40%)"}} key={item}></li>
     })
 
     return <div className='menu'>
-      <ul className='colors'>
-        {hues}
-      </ul>
-      <ul className='presets'>
-      </ul>
+      <div className='colors-and-presets'>
+        <ul className='colors'>
+          {hues}
+          {presets}
+        </ul>
+      </div>
       <ul className='settings'>
-        <input type="range" step={5} min={10} max={300} defaultValue={this.props.dim.w} onChange={this.handleSizeChange}/>
+        <li>
+          <label>Squaresize</label>
+          <input name='size' type="range" step='2' min='10' max='300' defaultValue={this.props.dim.edge} onChange={this.onSliderChange}/>
+        </li>
+        <li>
+          <label>Lightness</label>
+          <input name='lightness' type="range" defaultValue={this.props.colorCfg.lightness} onChange={this.onSliderChange}/>
+        </li>
+        <li>
+          <label>Shades</label>
+          <input name='shades' type="range" min='2' max='20' defaultValue={this.props.colorCfg.shades} onChange={this.onSliderChange}/>
+        </li>
+        <li>
+          <label>Shadestep</label>
+          <input name='shadeStep' type="range" defaultValue={this.props.colorCfg.shadeStep} onChange={this.onSliderChange}/>
+        </li>
+        <li>
+          <label>Saturation</label>
+          <input name='saturation' type="range" defaultValue={this.props.colorCfg.saturation} onChange={this.onSliderChange}/>
+        </li>
       </ul>
     </div>
+  }
+})
+
+var ColorButton = React.createClass({
+  displayName: "ColorButton",
+
+  propTypes: {
+    hue: React.PropTypes.number.isRequired
+  },
+
+  onColorChange: function() {
+    var isActive = (_.indexOf(this.props.activeHues, this.props.hue) === -1) ? false : true,
+        action = isActive ? 'remove' : 'add';
+    CanvasStore.colorChange(action, parseInt(this.props.hue));
+  },
+
+  render: function() {
+    var activeHues = this.props.activeHues,
+        isActive = (_.indexOf(activeHues, this.props.hue) === -1) ? '35%' : '45%',
+        style = {background: "hsl("+this.props.hue+", 100%,"+isActive+")"};
+
+    return <li className='menu-color' onClick={this.onColorChange} style={style}></li>
   }
 
 })
