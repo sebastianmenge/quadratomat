@@ -1,8 +1,8 @@
 var CanvasStore = {
   _data: {
     squares: [],
-    dim: $.extend(true, {}, ColorDef.presets.standard.dim),
-    colorCfg: $.extend(true, {}, ColorDef.presets.standard.color)
+    dim: $.extend(true, {}, ColorDef.presets.hereandthere.dim),
+    colorCfg: $.extend(true, {}, ColorDef.presets.hereandthere.color)
   },
 
   init: function(callback) {
