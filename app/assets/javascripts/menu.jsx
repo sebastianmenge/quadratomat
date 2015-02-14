@@ -63,7 +63,7 @@ var ColorButton = React.createClass({
 
   render: function() {
     var activeHues = this.props.activeHues,
-        isActive = (_.indexOf(activeHues, this.props.hue) === -1) ? '23%' : '45%',
+        isActive = (_.indexOf(activeHues, this.props.hue) === -1) ? '92%' : '68%',
         style = {background: "hsl("+this.props.hue+", 100%,"+isActive+")"};
 
     return <li className='menu-color' onClick={this.onColorChange} style={style}></li>
