@@ -73,8 +73,10 @@ body {
     width: 40px;
     height: 40px;
   }
-  .menu-preset:first-of-type {
-    border: 3px solid red;
+  @each $preset in matrix, lagoon, standard, playground, hereandthere, white {
+    .preset-#{$preset} {
+      background-image: image-url('#{$preset}.png');
+    }
   }
   label {
     display: block;

@@ -83,10 +83,9 @@ var PresetButton = React.createClass({
   },
 
   render: function() {
-    var name = this.props.preset.name,
-        style = {background: "url(assets/"+name+".png) no-repeat"};
+    var presetName = this.props.preset.name;
 
-    return <li className='menu-color' onClick={this.onPresetChange} style={style}></li>
+    return <li className={'menu-preset '+'preset-'+presetName} onClick={this.onPresetChange}></li>
   }
 
 })
