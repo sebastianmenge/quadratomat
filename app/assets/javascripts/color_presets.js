@@ -37,9 +37,9 @@ var ColorDef = {
     hereandthere: {
       name: 'hereandthere',
       dim: {
-        edge: 10,
-        x: -10,
-        y: -10,
+        edge: 47,
+        x: -47,
+        y: -47,
       },
       color: {
         hues: [31, 39, 47, 55, 58, 68, 87, 119, 138, 147, 192, 202],
