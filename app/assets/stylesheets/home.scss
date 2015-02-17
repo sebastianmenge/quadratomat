@@ -47,7 +47,6 @@ body {
   z-index: 10;
   background: rgba(255, 255, 255, .97);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.31);
-  height: 115px;
   @include flexbox();
   flex-flow: column;
   -webkit-flex-flow: column;
@@ -63,7 +62,7 @@ body {
 
 .colors, .settings {
   padding: 0 20px;
-  margin: 0;
+  margin: 18px 0 0;
   width: 100%;
   list-style-type: none;
   @include flexbox();
@@ -86,7 +85,7 @@ body {
   }
 }
 .settings {
-  margin-top: 20px;
+  margin: 23px 0 18px;
   li {
     flex: 1;
   }
